@@ -1,7 +1,7 @@
-$data = Get-Content -path ..\input.txt
+$data = (Get-Content -path ..\input.txt) -join " "
 
 $total = $null
-$dos = ($data -join " ").Split("do()")
+$dos = $data.Split("do()")
 
 foreach ($do in $dos){
   $matches = ($do.Split("don't()")[0] | Select-String -Pattern 'mul\((\d+),(\d+)\)' -AllMatches).Matches
